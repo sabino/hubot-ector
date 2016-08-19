@@ -1,8 +1,8 @@
 {
-  "name": "hubot-ector",
+  "name": "hubot-ectorx",
   "description": "Hubot's ECTOR script package (learning chatterbot)",
   "version": "1.2.1",
-  "author": "François Parmentier <francois.parmentier@gmail.com>",
+  "author": "Felipe Sabino <fgsabino@gmail.com>",
   "license": "MIT",
   "keywords": [
     "hubot",
@@ -11,10 +11,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/parmentf/hubot-ector.git"
+    "url": "git://github.com/sabino/hubot-ector.git"
   },
   "bugs": {
-    "url": "https://github.com/parmentf/hubot-ector/issues"
+    "url": "https://github.com/sabino/hubot-ector/issues"
   },
   "dependencies": {
     "coffee-script": "~1.6",

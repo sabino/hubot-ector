@@ -2,10 +2,6 @@
 
 A learning chatterbot script package for [Hubot](https://hubot.github.com/)
 
-[![Build Status](https://travis-ci.org/parmentf/hubot-ector.png)](https://travis-ci.org/parmentf/hubot-ector)
-
-[![NPM](https://nodei.co/npm/hubot-ector.png)](https://nodei.co/npm/hubot-ector/)
-
 ## Installation
 
 After [having a hubot
@@ -13,13 +9,13 @@ installed](https://github.com/github/hubot/tree/master/docs#getting-started-
 with-hubot), go into its directory. Then:
 
 ```bash
-$ npm install --save hubot-ector
+$ npm install --save hubot-ectorx
 ```
 
-Then, add `"hubot-ector"` into the file `external-scripts.json`. The minimal one is:
+Then, add `"hubot-ectorx"` into the file `external-scripts.json`. The minimal one is:
 
 ```json
-[ "hubot-ector" ]
+[ "hubot-ectorx" ]
 ```
 
 ## Commands
