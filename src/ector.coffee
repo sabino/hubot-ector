@@ -31,6 +31,7 @@ ector.cn.load file_backup, (err) ->
     console.error 'Error while loading cn.json\n%s', err
 previousResponseNodes = null
 quiet = false
+just_listening = false
 speakReplies = 
   [ 'Thanks.', 'OK', 'As you will.', 'Glad to be here again :)', ':)', 'Thank you.']
 
