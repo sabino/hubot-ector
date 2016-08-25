@@ -64,8 +64,11 @@ module.exports = function(robot) {
           return msg.send("Erro ao salvar no arquivo de backup: ", err);
         } else {
           exec(cmd, function(error, stdout, stderr) {
-              return msg.send("Salvei minhas informações, minha mente está segura agora!");
+            console.log(error);
+            console.log(stdout);
+            console.log(stderr);
           });
+          return msg.send("Salvei minhas informações, minha mente está segura agora!");
         }
       });
     }
