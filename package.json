@@ -1,7 +1,7 @@
 {
   "name": "hubot-ectorx",
   "description": "Hubot's ECTOR script package (learning chatterbot)",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "author": "Felipe Sabino <fgsabino@gmail.com>",
   "license": "MIT",
   "keywords": [
