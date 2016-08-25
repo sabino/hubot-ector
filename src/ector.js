@@ -61,14 +61,14 @@ module.exports = function(robot) {
     {
       return ector.cn.save(file_backup, function(err) {
         if (err) {
-          return msg.send("Erro ao salvar no arquivo de backup: ", err);
+          return msg.reply("Erro ao salvar no arquivo de backup: ", err);
         } else {
           exec(cmd, function(error, stdout, stderr) {
             console.log(error);
             console.log(stdout);
             console.log(stderr);
           });
-          return msg.send("Salvei minhas informações, minha mente está segura agora!");
+          return msg.reply("Salvei minhas informações, minha mente está segura agora!");
         }
       });
     }
