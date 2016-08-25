@@ -14,7 +14,7 @@ ector.injectConceptNetwork(FileConceptNetwork);
 
 ector.cn.load(file_backup, function(err) {
   if (err) {
-    return console.error('Error while loading cn.json\n%s', err);
+    return console.error('Erro ao carregar cn.json\n%s', err);
   }
 });
 
@@ -24,28 +24,28 @@ quiet = false;
 
 just_listening = false;
 
-speakReplies = ['Thanks.', 'OK', 'As you will.', 'Glad to be here again :)', ':)', 'Thank you.'];
+speakReplies = ['Obrigado.', 'OK', 'Como quiser.', 'Estou de volta! :)', ':)', 'Vlw'];
 
 module.exports = function(robot) {
   ector.setName(robot.name);
-  robot.respond(/shut up/i, function(msg) {
+  robot.respond(/cmd pare/i, function(msg) {
     return quiet = true;
   });
-  robot.respond(/just listen/i, function(msg) {
+  robot.respond(/cmd escute/i, function(msg) {
     just_listening = true;
-    return msg.reply("Now I'm just listening.");
+    return msg.reply("Agora estou apenas escutando.");
   });
-  robot.respond(/speak/i, function(msg) {
+  robot.respond(/cmd fale/i, function(msg) {
     quiet = false;
     just_listening = false;
     return msg.reply(msg.random(speakReplies));
   });
-  robot.respond(/save yourself/i, function(msg) {
+  robot.respond(/cmd salve/i, function(msg) {
     return ector.cn.save(file_backup, function(err) {
       if (err) {
-        return msg.reply("An error occurred while saving cn.json:", err);
+        return msg.reply("Erro ao salvar no arquivo cn.json:", err);
       } else {
-        return msg.reply("Thanks, My mind is safe now!");
+        return msg.reply("Obrigado, minha mente está segura agora!");
       }
     });
   });
@@ -54,18 +54,32 @@ module.exports = function(robot) {
     console.log("BEGIN OF MSG");
     console.log(msg);
     console.log("END OF MSG");
-    if (!quiet) {
-      text = msg.message.text.replace("autobotico","");
-      ector.setUser(msg.message.user.user);
-      console.log(msg.message.user.user);
-      ector.addEntry(text);
-      if (!just_listening) {
-        ector.linkNodesToLastSentence(previousResponseNodes);
-        response = ector.generateResponse();
-        previousResponseNodes = response.nodes;
-        console.log("RESPONSE");
-        console.log(response.sentence);
-        return msg.reply(response.sentence);
+
+    if(msg.message.user.user == "fgsabino" && msg.message.text.replace("autobotico", "").indexOf("cmd salve") !== -1)
+    {
+      return ector.cn.save(file_backup, function(err) {
+        if (err) {
+          return msg.reply("Erro ao salvar no arquivo de backup: ", err);
+        } else {
+          return msg.reply("Obrigado, minha mente está segura agora!");
+        }
+      });
+    }
+
+    if(msg.message.user.user != "autobotico") {
+      if (!quiet) {
+        text = msg.message.text.replace("autobotico","");
+        ector.setUser(msg.message.user.user);
+        console.log(msg.message.user.user);
+        ector.addEntry(text);
+        if (!just_listening) {
+          ector.linkNodesToLastSentence(previousResponseNodes);
+          response = ector.generateResponse();
+          previousResponseNodes = response.nodes;
+          console.log("RESPONSE");
+          console.log(response.sentence);
+          return msg.reply(response.sentence);
+        }
       }
     }
   });
