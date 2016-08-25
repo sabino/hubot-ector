@@ -57,7 +57,7 @@ module.exports = function(robot) {
     console.log(msg);
     console.log("END OF MSG");
 
-    if((msg.message.user.user == "fgsabino" || msg.message.user.user == "autobotico") && msg.message.text.replace("autobotico", "").indexOf("cmd salve") !== -1)
+    if(msg.message.user.user == "fgsabino" && msg.message.text.replace("autobotico", "").indexOf("cmd salve") !== -1)
     {
       return ector.cn.save(file_backup, function(err) {
         if (err) {
