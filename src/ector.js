@@ -1,4 +1,6 @@
 var Ector, FileConceptNetwork, ector, file_backup, just_listening, previousResponseNodes, quiet, speakReplies, util;
+var exec = require('child_process').exec;
+var cmd = './gdrive update --refresh-token ' + process.env.GDRIVE + ' cn.json';
 
 util = require('util');
 
@@ -55,13 +57,15 @@ module.exports = function(robot) {
     console.log(msg);
     console.log("END OF MSG");
 
-    if(msg.message.user.user == "fgsabino" && msg.message.text.replace("autobotico", "").indexOf("cmd salve") !== -1)
+    if((msg.message.user.user == "fgsabino" || msg.message.user.user == "autobotico") && msg.message.text.replace("autobotico", "").indexOf("cmd salve") !== -1)
     {
       return ector.cn.save(file_backup, function(err) {
         if (err) {
-          return msg.reply("Erro ao salvar no arquivo de backup: ", err);
+          return msg.send("Erro ao salvar no arquivo de backup: ", err);
         } else {
-          return msg.reply("Obrigado, minha mente está segura agora!");
+          exec(cmd, function(error, stdout, stderr) {
+              return msg.send("Salvei minhas informações, minha mente está segura agora!");
+          });
         }
       });
     }
